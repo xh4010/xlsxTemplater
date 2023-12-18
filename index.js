@@ -184,7 +184,7 @@ class XlsxTemplater{
     const calcRowHeight=Math.ceil(lineCount * (fontSize + 3) + 1.4);
 
     const row=this.ws.getRow($cell.row);
-    row.height=Math.max(row.height, calcRowHeight);
+    if(calcRowHeight > row.height)row.height=calcRowHeight;
   }
   /**
    添加图片
@@ -476,7 +476,7 @@ function duplicateRow(rowNum, count, insert = false) {
   const inserts = new Array(count).fill(rSrc.values);
   this.spliceRows(rowNum + 1, insert ? 0 : count, ...inserts);
 
-  //xiaohui: 以下
+  //xh4010@163.com: 以下
   //处理合并单元格
   // 1.记录合并单元格
   const merges={};
@@ -519,10 +519,12 @@ function duplicateRow(rowNum, count, insert = false) {
   if(rSrc.getCell(1).isMerged){
     const rs1m=rSrc.getCell(1).master;
     const {model:range}=this._merges[rs1m.address];
-    const scope1=getColumnLetter(range.left)+range.top+':'+getColumnLetter(range.right)+range.bottom;
-    const scope2=getColumnLetter(range.left)+range.top+':'+getColumnLetter(range.right)+(range.bottom+count);
-    this.unMergeCells(scope1)
-    this.mergeCells(scope2)
+    if(range.top!==range.bottom){
+      const scope1=getColumnLetter(range.left)+range.top+':'+getColumnLetter(range.right)+range.bottom;
+      const scope2=getColumnLetter(range.left)+range.top+':'+getColumnLetter(range.right)+(range.bottom+count);
+      this.unMergeCells(scope1)
+      this.mergeCells(scope2)
+    }
   }
   // 4.新行合并单元格
   Object.values(merges).forEach(cols=>{
@@ -532,7 +534,7 @@ function duplicateRow(rowNum, count, insert = false) {
       this.mergeCells(scope);
     }
   })
-  //xiaohui: 以上
+  //xh4010@163.com: 以上
 
   // now copy styles...
   for (let i = 0; i < count; i++) {
