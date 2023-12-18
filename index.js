@@ -1,11 +1,9 @@
 const ExcelJS = require('exceljs');
 const libre = require('./lib/libreoffice-convert');
 libre.convertAsync = require('util').promisify(libre.convert);
-const path = require('path');
 const QRCode = require('qrcode');
 const addressRegex = /^[A-Z]+\d+$/;
 
-const fs = require('fs').promises;
 const PLACEHOIDER_TYPE={
   VALUE: 0,
   IMAGE: 1,
@@ -319,24 +317,13 @@ class XlsxTemplater{
       }
       
     }
+    this.ws.name=data.name || 'xlsxTemplater';
   }
-  async export(){
-    const buf = await this.xlsx.writeBuffer();
-    /* // TEST
-    const filePath=path.join(__dirname,'../../test/out/report.xlsx')
-    // const filePath=path.join('/tempdata/','report.xlsx')
-    await fs.writeFile(filePath, buf);
-    // */
-    let opts;
-    if(process.env.NODE_ENV==='production'){
-      opts={
-        tmpOptions:{tmpdir:"/tempdata"},
-        requestToContainer: true,
-        containerConvertApi: 'http://libre_convert:5055'
-      }
-    }
-    const pdfBuf = await libre.convertAsync(buf, 'pdf', undefined, opts);
-    return pdfBuf;
+  async export(format='pdf', options={}){
+    const buff = await this.xlsx.writeBuffer();
+    if(format.toLocaleLowerCase()=='xlsx')return buff;
+    const convBuff = await libre.convertAsync(buff, format, undefined, options);
+    return convBuff;
   }
 }
 function parseCell($cell){
