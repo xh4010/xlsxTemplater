@@ -6,7 +6,7 @@
 - It utilizes LibreOffice for generating PDFs. Please ensure that [LibreOffice](https://www.libreoffice.org/) is installed beforehand. Alternatively, you can use the provided Dockerfile to quickly set up a container.
   
 ## Usage
-``` lang=javascript
+```javascript
 const fs = require('fs').promises;
 const XlsxTemplater = require('xlsxtemplater')
 async function main() {
@@ -31,7 +31,7 @@ async function main() {
         desc:'note'
       },
     ],
-  }, {})
+  })
   const buff = await xlsxTemplater.export();
   const filePath = 'path/to/out.pdf';
   await fs.writeFile(filePath, buff);
