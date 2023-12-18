@@ -26,7 +26,7 @@ async function main() {
     ],
   }, {})
   const pdfBuf = await xlsxTemplater.export();
-  const filePath = path.join(__dirname, './resources/output/report1.pdf')
+  const filePath = path.join(__dirname, './resources/output/report.pdf')
   await fs.writeFile(filePath, pdfBuf)
 }
 
