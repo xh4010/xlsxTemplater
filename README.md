@@ -14,5 +14,5 @@
 ## Acknowledgments
 The xlxsTemplater is developed based on the excellent [exceljs](https://github.com/exceljs/exceljs) library.
 
-The pdf export functionality in xlsxtemplater depends on [LibreOffice](https://www.libreoffice.org/), drawing inspiration from the [libreoffice-convert](https://github.com/elwerene/libreoffice-convert) library.
+The pdf export functionality in xlsxTemplater depends on [LibreOffice](https://www.libreoffice.org/), drawing inspiration from the [libreoffice-convert](https://github.com/elwerene/libreoffice-convert) library.
 
