@@ -6,12 +6,11 @@
 - It utilizes LibreOffice for generating PDFs. Please ensure that [LibreOffice](https://www.libreoffice.org/) is installed beforehand. Alternatively, you can use the provided Dockerfile to quickly set up a container.
   
 ## Usage
-```
+``` lang=javascript
 const fs = require('fs').promises;
-const path = require('path');
 const XlsxTemplater = require('xlsxtemplater')
 async function main() {
-  const template = 'path/to/template.xlsx;
+  const template = 'path/to/template.xlsx';
   const xlsxTemplater = new XlsxTemplater(template);
   await xlsxTemplater.parse();
   await xlsxTemplater.render({
@@ -34,8 +33,8 @@ async function main() {
     ],
   }, {})
   const buff = await xlsxTemplater.export();
-  const filePath = path.join(__dirname, './resources/output/report.pdf')
-  await fs.writeFile(filePath, buff)
+  const filePath = 'path/to/out.pdf';
+  await fs.writeFile(filePath, buff);
 }
 
 main().catch(function (err) {
