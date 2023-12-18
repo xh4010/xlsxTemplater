@@ -6,6 +6,7 @@ async function main() {
   const xlsxTemplater = new XlsxTemplater(template);
   await xlsxTemplater.parse();
   await xlsxTemplater.render({
+    name: 'TEST',
     logo: path.join(__dirname, './resources/logo.png'),
     code: 'https://www.baidu.com',
     creator: 'xh4010',
@@ -25,7 +26,7 @@ async function main() {
     ],
   }, {})
   const pdfBuf = await xlsxTemplater.export();
-  const filePath = path.join(__dirname, './resources/output/report.pdf')
+  const filePath = path.join(__dirname, './resources/output/report1.pdf')
   await fs.writeFile(filePath, pdfBuf)
 }
 
