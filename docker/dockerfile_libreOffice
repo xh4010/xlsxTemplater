@@ -1,0 +1,18 @@
+FROM python:3.11-alpine
+
+MAINTAINER xh4010@163.com
+
+# 修改镜像中的默认源地址信息
+RUN set -eux && sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
+
+RUN pip install flask
+
+RUN apk add --no-cache libreoffice && rm -rf /var/cache/*
+
+COPY ./app.py /app.py
+
+# 字体
+COPY ./fonts.zip /tmp/fonts.zip
+RUN unzip -n -d /usr/share/fonts /tmp/fonts.zip && rm -f /tmp/fonts.zip
+
+EXPOSE 5055
