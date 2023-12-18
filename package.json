@@ -1,0 +1,30 @@
+{
+  "name": "xlsxtemplater",
+  "version": "1.0.0",
+  "description": "**xlscTemplater** is a library that generates xlsx documents from an xlsx template by replacing pre-defined {placeholders}. It supports loop conditions, as well as the insertion of images and QR codes. The library is capable of producing output in xlsx/pdf formats.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "xh4010@163.com",
+  "keywords": [
+    "xlsx",
+    "excel",
+    "template",
+    "templater",
+    "templates",
+    "generate",
+    "generator",
+    "creator",
+    "libreoffice",
+    "convert",
+
+    "pdf",
+    "report"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xh4010/xlsxtemplater"
+  },
+  "license": "MIT"
+}
