@@ -319,7 +319,7 @@ class XlsxTemplater{
     }
     this.ws.name=data.name || 'xlsxTemplater';
   }
-  async export(format='pdf', options={}){
+  async export(format='pdf', options=XlsxTemplater.defaultExportOption||{}){
     const buff = await this.xlsx.writeBuffer();
     if(format.toLocaleLowerCase()=='xlsx')return buff;
     const convBuff = await libre.convertAsync(buff, format, undefined, options);
