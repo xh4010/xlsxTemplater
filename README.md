@@ -42,6 +42,11 @@ main().catch(function (err) {
 });
 ```
 
+## Example
+### xlsx template:
+![](images/xlsx.png)
+### output pdf:
+![](images/pdf.png)
 
 ## Acknowledgments
 The xlxsTemplater is developed based on the excellent [exceljs](https://github.com/exceljs/exceljs) library.
