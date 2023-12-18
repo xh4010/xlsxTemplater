@@ -3,7 +3,7 @@
 
 ## Requirements
 - It runs on Node.js, Node>=18.
-- It utilizes LibreOffice for generating PDFs. Please ensure that [LibreOffice](https://www.libreoffice.org/) is installed beforehand. Alternatively, you can use the provided Dockerfile to quickly set up a container.
+- It utilizes LibreOffice for generating PDFs. Please ensure that [LibreOffice](https://www.libreoffice.org/) is installed beforehand. Alternatively, you can use the provided [dockerfile](docker/dockerfile_libreOffice) to quickly set up a container.
 
 ## Installation
 ```
