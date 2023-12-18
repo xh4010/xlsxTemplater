@@ -1,0 +1,13 @@
+dist/
+node_modules/
+examples/
+images/
+*-lock.json
+.idea/
+.DS_Store
+.vscode
+.github/
+.gitignore
+.vscode
+
+
