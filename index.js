@@ -175,7 +175,7 @@ class XlsxTemplater{
 
       //行数
       const count=Math.ceil(chars/charsPerLine);
-      lineCount+= count-1;
+      if(count>0)lineCount+= count-1;
     })
 
     //行高近似值，内容全部显示，未考虑字间距/行距的差异
