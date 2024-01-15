@@ -5,6 +5,7 @@ const QRCode = require('qrcode');
 const addressRegex = /^[A-Z]+\d+$/;
 
 const PLACEHOIDER_TYPE={
+  BLANK: -1,
   VALUE: 0,
   IMAGE: 1,
   QRCODE: 2,
@@ -437,6 +438,9 @@ function parseCell($cell){
   if((existImage || existQrcode) && innerLoopVals.length>0){
     throw `${$cell.address}:, image or qrcode: inlining is not allowed`;
   }
+
+  if((loopStart || loopEnd)&&vals.length==0) vals.push({type: PLACEHOIDER_TYPE.BLANK});
+
   return {
     vals,
     row,
