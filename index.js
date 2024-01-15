@@ -336,6 +336,7 @@ function parseCell($cell){
   
   let vals = [],
     loopKey, loopStart = false,
+    loopVals=[],
     loopEnd = false,
     innerLoopStart = false,
     innerLoopEnd = false,
@@ -389,8 +390,7 @@ function parseCell($cell){
         innerLoopStart=true;
         innerLoopEnd=true;
         innerLoopKey=loopKey;
-        innerLoopVals=vals;
-        vals=[];
+        innerLoopVals=loopVals;
         const val={
           type: PLACEHOIDER_TYPE.INLINELOOP,
           key: innerLoopKey,
@@ -423,6 +423,7 @@ function parseCell($cell){
     }else{
       const val={type: PLACEHOIDER_TYPE.VALUE, key};
       if(!!key)if(innerLoopStart && !innerLoopEnd)innerLoopVals.push(val)
+      else if(loopStart && !loopEnd) loopVals.push(val)
       else vals.push(val);
     }
   }
