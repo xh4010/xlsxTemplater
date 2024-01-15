@@ -1,6 +1,13 @@
 # xlsxTemplater
 **xlscTemplater** is a library that generates xlsx documents from an xlsx template by replacing pre-defined {placeholders}. It supports loop conditions, as well as the insertion of images and QRCode. The library is capable of producing output in xlsx/pdf formats.
 
+## Features
+- **Basic** {prop}
+- **Image** {%image:prop} prop=path/to/file
+- **QRcode** {%qrcode:prop} prop is QRcode value
+- **Loop** {#itmes}{name}{/items}
+- **InnerLoop** {#itmes}{name}{#tags}{tag}{/tags}{/items} '{#tags}{tag}{/tags}' is in the same cell
+
 ## Requirements
 - It runs on Node.js, Node>=18.
 - It utilizes LibreOffice for generating PDFs. Please ensure that [LibreOffice](https://www.libreoffice.org/) is installed beforehand. Alternatively, you can use the provided [dockerfile](docker/dockerfile_libreOffice) to quickly set up a container.
