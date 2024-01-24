@@ -318,7 +318,7 @@ class XlsxTemplater{
       }
       
     }
-    this.ws.name=data.name.replace(/\*|\?|\:|\\|\/|\[|\]/g,' ') || 'xlsxTemplater';
+    this.ws.name=(!!data.name && data.name.replace(/\*|\?|\:|\\|\/|\[|\]/g,' ')) || 'xlsxTemplater';
   }
   async export(format='pdf', options=XlsxTemplater.defaultExportOption||{}){
     const buff = await this.xlsx.writeBuffer();
