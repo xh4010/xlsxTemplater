@@ -439,7 +439,10 @@ function parseCell($cell){
     throw `${$cell.address}:, image or qrcode: inlining is not allowed`;
   }
 
-  if((loopStart || loopEnd)&&vals.length==0) vals.push({type: PLACEHOIDER_TYPE.BLANK});
+  if((loopStart || loopEnd)&&vals.length==0){
+    if(loopVals.length>0)vals.push(...loopVals)
+    else vals.push({type: PLACEHOIDER_TYPE.BLANK});
+  }
 
   return {
     vals,
