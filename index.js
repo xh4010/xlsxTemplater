@@ -287,7 +287,7 @@ class XlsxTemplater{
           const row=i;
           let newVal='';
           let fmt;
-          for(let m=0; m<cell.vals.length; m++){
+          if(!!rData)for(let m=0; m<cell.vals.length; m++){
             const val=cell.vals[m];
             if(!rData[val.key])continue;
             const dval=rData[val.key];
